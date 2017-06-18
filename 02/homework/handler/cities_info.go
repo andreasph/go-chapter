@@ -33,7 +33,7 @@ func (h *citiesInfoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var payload []entity.Place
+	var payload []entity.Info
 
 	for _, id := range in {
 		// build request

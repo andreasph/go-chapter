@@ -1,6 +1,6 @@
 package entity
 
-type Place struct {
+type Info struct {
 	LongName    string `json:"long_name"`
 	ShortName   string `json:"short_name"`
 	Coordinates struct {
@@ -13,7 +13,7 @@ type Place struct {
 	PhotoReference   string  `json:"photo_reference"`
 }
 
-func (output *Place) FromInput(input GooglePlaces) {
+func (output *Info) FromInput(input GooglePlaces) {
 	if (len(input.Result.AddressComponents) > 0) {
 		output.LongName = input.Result.AddressComponents[0].LongName
 		output.ShortName = input.Result.AddressComponents[0].ShortName

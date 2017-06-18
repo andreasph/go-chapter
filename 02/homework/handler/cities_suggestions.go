@@ -40,9 +40,9 @@ func (h *citiesSuggestionsHandler) ServeHTTP(w http.ResponseWriter, r *http.Requ
 	}
 
 	// gather necessary information
-	payload := make([]entity.Autocomoplete, len(res.Predictions))
+	payload := make([]entity.Suggestion, len(res.Predictions))
 	for i, p := range res.Predictions {
-		payload[i] = entity.Autocomoplete{
+		payload[i] = entity.Suggestion{
 			PlaceId: p.PlaceId,
 			Name:    p.Description,
 		}

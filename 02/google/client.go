@@ -35,8 +35,8 @@ func (client *GoogleClient) PlaceAutocomplete(query string) (entity.GoogleAutoco
 	return res, nil;
 }
 
-func (client *GoogleClient) GetPlace(placeId string) (entity.Place, error) {
-	var res = entity.Place{}
+func (client *GoogleClient) GetPlace(placeId string) (entity.Info, error) {
+	var res = entity.Info{}
 
 	currentUrl := client.googlePlaceUrl + "&placeid=%s"
 	currentUrl = fmt.Sprintf(currentUrl, "details", client.apiKey, placeId)

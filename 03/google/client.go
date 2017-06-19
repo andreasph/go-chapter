@@ -70,23 +70,18 @@ func (client *GoogleClient) GetDistances(inputIds string) (map[string]map[string
 			origin := placesInfo[i].ShortName
 			destination := placesInfo[ii].ShortName
 
+			if _, ok := res[destination][origin]; ok {
+				continue
+			}
+
 			if _, ok := res[origin]; !ok {
 				res[origin] = make(map[string]float64)
 			}
 
 			if _, ok := res[origin][destination]; !ok {
-				if _, ok := res[destination][origin]; ok {
-					continue
-				}
 
 				res[origin][destination] = math.Floor(element.Distance.Value / 1000);
 			}
-		}
-	}
-
-	for origin, _ := range res {
-		if 0 == len(res[origin]) {
-			delete(res, origin)
 		}
 	}
 
